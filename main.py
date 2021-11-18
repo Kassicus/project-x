@@ -1,6 +1,7 @@
 import pygame
 import color
 import maps
+import player
 
 pygame.init()
 
@@ -20,6 +21,8 @@ class Game():
 
         self.testMap = maps.Map()
 
+        self.player = player.Player()
+
     def start(self):
         while self.running:
             self.events = pygame.event.get()
@@ -37,8 +40,12 @@ class Game():
 
         self.testMap.draw(self.screen)
 
+        self.player.draw(self.screen)
+
     def update(self):
         self.testMap.update(self.events)
+
+        self.player.update(self.events)
 
         pygame.display.update()
         self.clock.tick(30)
