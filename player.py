@@ -12,15 +12,15 @@ class Player():
         self.move_x = 0
         self.move_y = 0
 
-        self.speed = 5
+        self.speed = 8
 
         self.has_friction_x = True
         self.has_friction_y = True
-        
-        self.friction = 1
+
+        self.friction = 2
 
     def draw(self, surface):
-        pygame.draw.circle(surface, color.WHITE, (self.x, self.y), self.radius)
+        pygame.draw.circle(surface, color.white, (self.x, self.y), self.radius)
 
     def update(self, events):
         self.x += self.move_x
