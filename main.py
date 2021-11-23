@@ -46,7 +46,7 @@ class Game():
     def update(self):
         self.player.update(self.events)
 
-        self.map.update(self.events)
+        self.map.update(self.events, self.player)
     
         pygame.display.update()
         self.clock.tick(30)
