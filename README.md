@@ -5,7 +5,7 @@ An unnamed roguelike dungeon crawling game written in python and pygame
 # TODO
 
 - [x] Create the base game loop
-- [ ] Create a player class
+- [x] Create a player class
 - [ ] Create a basic room class
 - [ ] Create a basic projectile class
 

@@ -1,6 +1,7 @@
 import pygame
 
 import color
+import player
 
 pygame.init()
 
@@ -18,6 +19,8 @@ class Game():
         self.clock = pygame.time.Clock()
         self.events = pygame.event.get()
 
+        self.player = player.Player()
+
     def start(self):
         while self.running:
             self.events = pygame.event.get()
@@ -33,7 +36,11 @@ class Game():
     def draw(self):
         self.screen.fill(color.BLACK)
 
+        self.player.draw(self.screen)
+
     def update(self):
+        self.player.update(self.events)
+    
         pygame.display.update()
         self.clock.tick(30)
 
