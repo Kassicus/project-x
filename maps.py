@@ -1,7 +1,7 @@
 import pygame
+import random
 
 import color
-import random
 
 class Door():
     def __init__(self, x, y, width, height, parent, flow):

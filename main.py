@@ -3,6 +3,7 @@ import pygame
 import color
 import player
 import maps
+import bullet
 
 pygame.init()
 
@@ -43,10 +44,14 @@ class Game():
 
         self.player.draw(self.screen)
 
+        bullet.draw_bullets(self.screen)
+
     def update(self):
         self.player.update(self.events)
 
         self.map.update(self.events, self.player)
+
+        bullet.update_bullets()
     
         pygame.display.update()
         self.clock.tick(30)

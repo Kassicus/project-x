@@ -7,7 +7,7 @@ An unnamed roguelike dungeon crawling game written in python and pygame
 - [x] Create the base game loop
 - [x] Create a player class
 - [x] Create a basic room class
-- [ ] Create a basic projectile class
+- [x] Create a basic projectile class
 
 - [ ] Dynamically confine the players movement to each room `(allowing for different room sizes?)`
 - [x] Chain rooms together to create a map *(rework in the future)*

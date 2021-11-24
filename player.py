@@ -1,6 +1,7 @@
 import pygame
 
 import color
+import bullet
 
 class Player():
     def __init__(self):
@@ -18,6 +19,8 @@ class Player():
         self.has_friction_y = True
 
         self.friction = 2
+
+        self.weapon = bullet.BaseGun()
 
     def draw(self, surface):
         pygame.draw.circle(surface, color.white, (self.x, self.y), self.radius)
@@ -38,9 +41,9 @@ class Player():
             elif self.move_y < 0:
                 self.move_y += self.friction
 
-        self.movement_handler(events)
+        self.event_handler(events)
 
-    def movement_handler(self, events):
+    def event_handler(self, events):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_d:
@@ -62,3 +65,12 @@ class Player():
                     self.has_friction_x = True
                 if event.key == pygame.K_s or event.key == pygame.K_w:
                     self.has_friction_y = True
+
+        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+            self.weapon.shoot('right', self.x, self.y)
+        elif pygame.key.get_pressed()[pygame.K_LEFT]:
+            self.weapon.shoot('left', self.x, self.y)
+        elif pygame.key.get_pressed()[pygame.K_UP]:
+            self.weapon.shoot('up', self.x, self.y)
+        elif pygame.key.get_pressed()[pygame.K_DOWN]:
+            self.weapon.shoot('down', self.x, self.y)
