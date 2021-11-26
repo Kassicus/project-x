@@ -4,6 +4,7 @@ import color
 import player
 import maps
 import bullet
+import enemy
 
 pygame.init()
 
@@ -26,6 +27,8 @@ class Game():
         self.map = maps.starting_map
 
     def start(self):
+        enemy.spawn_enemies(5)
+
         while self.running:
             self.events = pygame.event.get()
 
@@ -46,12 +49,16 @@ class Game():
 
         bullet.draw_bullets(self.screen)
 
+        enemy.draw_enemies(self.screen)
+
     def update(self):
         self.player.update(self.events)
 
         self.map.update(self.events, self.player)
 
         bullet.update_bullets()
+
+        enemy.update_enemies(self.events, (self.player.x, self.player.y))
     
         pygame.display.update()
         self.clock.tick(30)

@@ -1,4 +1,4 @@
-# project-x
+# PROJECT-X
 
 An unnamed roguelike dungeon crawling game written in python and pygame
 
@@ -9,7 +9,7 @@ An unnamed roguelike dungeon crawling game written in python and pygame
 - [x] Create a basic room class
 - [x] Create a basic projectile class
 
-- [ ] Dynamically confine the players movement to each room `(allowing for different room sizes?)`
+- [ ] Dynamically confine the players movement to each room `(allowing for different room sizes?)` **(the map system currently does not allow for rooms with non-standard sizes)**
 - [x] Chain rooms together to create a map *(rework in the future)*
 - [ ] Create lockable doors `(player has to use keys? explosives?)` **(this may require starting on an inventory system prior to this step)**
 - [ ] Create dynamic collision for all projectile items against the boundaries of the rooms
