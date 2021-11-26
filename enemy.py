@@ -3,16 +3,9 @@ import random
 
 import color
 import bullet
+import maps
 
-bullets = bullet.active_bullets
-
-all_enemies = pygame.sprite.Group()
-
-def draw_enemies(surface):
-    all_enemies.draw(surface)
-
-def update_enemies(events, player_pos):
-    all_enemies.update(events, player_pos)
+bullets = maps.starting_map.active_room.bullet_group
 
 class Chaser(pygame.sprite.Sprite):
     def __init__(self):
@@ -67,7 +60,7 @@ class Chaser(pygame.sprite.Sprite):
                     self.kill()
                     bullet.kill()
 
-def spawn_enemies(count):
+def spawn_enemies(count, active_map):
     for e in range(count):
         e = Chaser()
-        all_enemies.add(e)
+        active_map.enemy_group.add(e)

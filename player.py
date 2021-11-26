@@ -2,6 +2,7 @@ import pygame
 
 import color
 import bullet
+import maps
 
 class Player():
     def __init__(self):
@@ -44,6 +45,8 @@ class Player():
         self.event_handler(events)
 
     def event_handler(self, events):
+        global maps
+
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_d:
@@ -67,10 +70,10 @@ class Player():
                     self.has_friction_y = True
 
         if pygame.key.get_pressed()[pygame.K_RIGHT]:
-            self.weapon.shoot('right', self.x, self.y)
+            self.weapon.shoot('right', self.x, self.y, maps.starting_map.active_room)
         elif pygame.key.get_pressed()[pygame.K_LEFT]:
-            self.weapon.shoot('left', self.x, self.y)
+            self.weapon.shoot('left', self.x, self.y, maps.starting_map.active_room)
         elif pygame.key.get_pressed()[pygame.K_UP]:
-            self.weapon.shoot('up', self.x, self.y)
+            self.weapon.shoot('up', self.x, self.y, maps.starting_map.active_room)
         elif pygame.key.get_pressed()[pygame.K_DOWN]:
-            self.weapon.shoot('down', self.x, self.y)
+            self.weapon.shoot('down', self.x, self.y, maps.starting_map.active_room)

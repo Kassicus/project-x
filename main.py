@@ -27,7 +27,7 @@ class Game():
         self.map = maps.starting_map
 
     def start(self):
-        enemy.spawn_enemies(5)
+        enemy.spawn_enemies(5, self.map.active_room)
 
         while self.running:
             self.events = pygame.event.get()
@@ -47,18 +47,10 @@ class Game():
 
         self.player.draw(self.screen)
 
-        bullet.draw_bullets(self.screen)
-
-        enemy.draw_enemies(self.screen)
-
     def update(self):
         self.player.update(self.events)
 
         self.map.update(self.events, self.player)
-
-        bullet.update_bullets()
-
-        enemy.update_enemies(self.events, (self.player.x, self.player.y))
     
         pygame.display.update()
         self.clock.tick(30)

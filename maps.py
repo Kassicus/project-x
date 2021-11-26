@@ -56,6 +56,9 @@ class Room():
         self.left_door = Door(self.x, self.y + 250, 25, 200, self, "left")
         self.right_door = Door(self.x + self.width - 25, self.y + 250, 25, 200, self, "right")
 
+        self.bullet_group = pygame.sprite.Group()
+        self.enemy_group = pygame.sprite.Group()
+
         if self.active_doors[0]:
             self.doors.append(self.top_door)
         if self.active_doors[1]:
@@ -67,11 +70,16 @@ class Room():
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
+        self.enemy_group.draw(surface)
+        self.bullet_group.draw(surface)
 
         for door in self.doors:
             door.draw(surface)
 
     def update(self, events, player):
+        self.enemy_group.update(events, (player.x, player.y))
+        self.bullet_group.update()
+
         for door in self.doors:
             door.update(events, player)
 

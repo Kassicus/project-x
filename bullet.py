@@ -4,12 +4,6 @@ import color
 
 active_bullets = pygame.sprite.Group()
 
-def draw_bullets(surface):
-    active_bullets.draw(surface)
-
-def update_bullets():
-    active_bullets.update()
-
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, direction, damage, speed, size):
         pygame.sprite.Sprite.__init__(self)
@@ -63,7 +57,7 @@ class BaseGun():
 
         global active_bullets
 
-    def shoot(self, direction, x, y):
+    def shoot(self, direction, x, y, active_map):
         self.cooldown -= 1
 
         if self.cooldown <= 0:
@@ -76,6 +70,6 @@ class BaseGun():
             elif direction == 'down':
                 b = Bullet(x, y, 'down', self.damage, self.bullet_speed, self.bullet_size)
         
-            active_bullets.add(b)
+            active_map.bullet_group.add(b)
 
             self.cooldown = self.max_cooldown
