@@ -36,6 +36,10 @@ class Game():
                 if event.type == pygame.QUIT:
                     self.running = False
 
+                """if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_p:
+                        enemy.spawn_enemies(5, self.map.active_room)"""
+
             self.draw()
 
             self.update()
